@@ -2,6 +2,7 @@
 
   <% if book.errors.any? %>
     <div>
+      <h2>error</h2>
       <p><%= book.errors.count %> prohibited this book from being saved:</p>
       <ul>
         <% book.errors.full_messages.each do |message| %>
