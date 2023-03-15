@@ -25,4 +25,18 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  def self.user_search(how_to_match, text)
+    if how_to_match == "perfect_match"
+      return User.where("name LIKE?", "#{text}")
+    elsif how_to_match == "forward_match"
+      return User.where("name LIKE?", "#{text}%")
+    elsif how_to_match == "backward_match"
+      return User.where("name LIKE?", "%#{text}")
+    elsif how_to_match == "partial_match"
+      return User.where("name LIKE?", "%#{text}%")
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
 end
