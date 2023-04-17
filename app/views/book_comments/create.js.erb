@@ -1,0 +1,2 @@
+$(".comment_<%= @book.id %>").html("<%= escape_javascript(render partial: '/book_comments/comment', locals: {comments: @comments, book: @book, comment: @comment}) %>");
+$(".sentence").val("");
